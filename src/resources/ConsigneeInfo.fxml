@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<AnchorPane id="AnchorPane" maxHeight="300.0" maxWidth="455.0" minHeight="300.0" minWidth="455.0" prefHeight="300.0" prefWidth="455.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="logistics.controllers.ConsigneeInfoController">
+   <children>
+      <GridPane layoutX="78.0" layoutY="70.0" prefHeight="161.0" prefWidth="276.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="70.0">
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="280.0" minWidth="10.0" prefWidth="270.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints maxHeight="20.0" minHeight="20.0" prefHeight="20.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="50.0" minHeight="50.0" prefHeight="50.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="20.0" minHeight="20.0" prefHeight="20.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="50.0" minHeight="50.0" prefHeight="50.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="20.0" minHeight="20.0" prefHeight="20.0" vgrow="SOMETIMES" />
+         </rowConstraints>
+         <children>
+            <JFXTextField fx:id="txtBankName" labelFloat="true" promptText="Bank Name" GridPane.rowIndex="1" />
+            <JFXTextField fx:id="txtAddress" labelFloat="true" promptText="Bank Address" GridPane.rowIndex="3" />
+         </children>
+      </GridPane>
+      <Label contentDisplay="RIGHT" graphicTextGap="20.0" layoutX="78.0" layoutY="28.0" prefHeight="31.0" prefWidth="276.0" text="Consignee Bank Info">
+         <graphic>
+            <FontAwesomeIconView glyphName="INSTITUTION" size="20" />
+         </graphic></Label>
+      <JFXButton fx:id="btnAddressPage" buttonType="RAISED" contentDisplay="GRAPHIC_ONLY" layoutX="373.0" layoutY="231.0" onAction="#btnAddressPageAction" prefHeight="50.0" prefWidth="61.0" ripplerFill="#639c2d" AnchorPane.bottomAnchor="15.0" AnchorPane.rightAnchor="15.0">
+         <graphic>
+            <FontAwesomeIconView fill="#2fc2a2" glyphName="PLUS" size="30">
+               <effect>
+                  <Glow level="0.48" />
+               </effect>
+            </FontAwesomeIconView>
+         </graphic>
+      </JFXButton>
+   </children>
+</AnchorPane>

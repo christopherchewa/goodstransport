@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXListView?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
+
+<StackPane maxHeight="645.0" maxWidth="1200.0" minHeight="645.0" minWidth="1200.0" prefHeight="645.0" prefWidth="1200.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="logistics.controllers.OrderFormController">
+   <children>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0">
+         <children>
+            <AnchorPane layoutX="18.0" layoutY="12.0" prefHeight="635.0" prefWidth="550.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="5.0">
+               <children>
+                  <GridPane layoutY="-4.0" prefHeight="606.0" prefWidth="510.0" AnchorPane.bottomAnchor="4.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="32.0" AnchorPane.topAnchor="-4.0">
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="195.3333282470703" minWidth="10.0" prefWidth="169.3333282470703" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="200.0" minWidth="200.0" prefWidth="200.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="141.66668701171875" minWidth="10.0" prefWidth="141.66668701171875" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints maxHeight="48.0" minHeight="40.0" prefHeight="42.666664123535156" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="40.0" minHeight="32.0" prefHeight="37.333335876464844" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="40.0" minHeight="40.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="40.0" minHeight="40.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="20.0" prefHeight="20.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="40.0" minHeight="40.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="40.0" minHeight="40.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="40.0" minHeight="40.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="20.0" prefHeight="20.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="40.0" minHeight="40.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="40.0" minHeight="40.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="40.0" minHeight="40.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="35.666656494140625" minHeight="10.0" prefHeight="35.666656494140625" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="49.333343505859375" minHeight="10.0" prefHeight="37.333343505859375" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <children>
+                        <Label prefHeight="17.0" prefWidth="144.0" text="CONSIGNER DETAILS" textFill="#ff9b3d" />
+                        <Label prefHeight="17.0" prefWidth="144.0" text="Select Consigner:" GridPane.rowIndex="1" />
+                        <JFXComboBox fx:id="cbConsigner" onAction="#cbConsignerAction" prefHeight="25.0" prefWidth="200.0" promptText="Select a consigner" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <JFXButton fx:id="btnAddConsigner" contentDisplay="GRAPHIC_ONLY" onAction="#btnAddConsignerAction" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                           <graphic>
+                              <FontAwesomeIconView glyphName="PLUS" />
+                           </graphic>
+                        </JFXButton>
+                        <Label prefHeight="64.0" prefWidth="153.0" text="Order Date:" visible="false" GridPane.rowIndex="2" />
+                        <JFXTextField fx:id="txtOrderDate" disable="true" maxWidth="200.0" minWidth="200.0" prefHeight="31.0" prefWidth="200.0" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <Label text="ORDER REF ID:" GridPane.rowIndex="2" />
+                        <Label fx:id="lblOrderId" text="Order id" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <Label text="Select Shipper:" GridPane.rowIndex="6" />
+                        <Label prefHeight="17.0" prefWidth="144.0" text="SHIPPER DETAILS" textFill="#ff9b3d" GridPane.rowIndex="5" />
+                        <JFXComboBox fx:id="cbShipper" maxWidth="200.0" minWidth="200.0" onAction="#cbShipperAction" prefHeight="25.0" prefWidth="200.0" promptText="Select a shipper" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                        <Label prefHeight="17.0" prefWidth="144.0" text="Pickup Date:" GridPane.rowIndex="7" />
+                        <JFXDatePicker fx:id="pickupDate" maxWidth="200.0" minWidth="200.0" prefHeight="31.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                        <JFXButton fx:id="btnAddShipper" contentDisplay="GRAPHIC_ONLY" onAction="#btnAddShipperAction" prefHeight="25.0" prefWidth="34.0" GridPane.columnIndex="2" GridPane.rowIndex="6">
+                           <graphic>
+                              <FontAwesomeIconView glyphName="PLUS" />
+                           </graphic>
+                        </JFXButton>
+                        <Label prefHeight="32.0" prefWidth="108.0" text="Select Cosnsigee:" GridPane.rowIndex="10" />
+                        <JFXComboBox fx:id="cbConsignee" maxWidth="200.0" minWidth="200.0" onAction="#cbConsigneeAction" prefHeight="25.0" prefWidth="200.0" promptText="Select a consignee" GridPane.columnIndex="1" GridPane.rowIndex="10" />
+                        <JFXButton fx:id="btnAddConsignee" contentDisplay="GRAPHIC_ONLY" onAction="#btnAddConsigneeAction" prefHeight="25.0" prefWidth="34.0" GridPane.columnIndex="2" GridPane.rowIndex="10">
+                           <graphic>
+                              <FontAwesomeIconView glyphName="PLUS" />
+                           </graphic>
+                        </JFXButton>
+                        <Label prefHeight="17.0" prefWidth="144.0" text="CONSIGNEE DETAILS" textFill="#ff9b3d" GridPane.rowIndex="9" />
+                        <Label prefHeight="32.0" prefWidth="168.0" text="Select Drop Off Location" GridPane.rowIndex="11" />
+                        <JFXComboBox fx:id="cbDropOff" maxWidth="200.0" minWidth="200.0" onAction="#cbDropOffAction" prefHeight="25.0" prefWidth="200.0" promptText="Select the drop off location" GridPane.columnIndex="1" GridPane.rowIndex="11" />
+                        <Separator prefWidth="200.0" GridPane.rowIndex="4" />
+                        <Separator prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                        <Separator prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+                        <Separator prefWidth="200.0" GridPane.rowIndex="8" />
+                        <Separator prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+                        <Separator prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="8" />
+                        <JFXButton fx:id="btnAddDropOff" contentDisplay="GRAPHIC_ONLY" onAction="#btnAddDropOffAction" prefHeight="25.0" prefWidth="34.0" GridPane.columnIndex="2" GridPane.rowIndex="11">
+                           <graphic>
+                              <FontAwesomeIconView glyphName="PLUS" />
+                           </graphic>
+                        </JFXButton>
+                        <Separator prefWidth="200.0" GridPane.rowIndex="12" />
+                        <Separator prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="12" />
+                        <Separator prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="12" />
+                        <Label prefHeight="36.0" prefWidth="275.0" text="DRIVER(S) DETAILS" textFill="#ff9b3d" GridPane.rowIndex="13" />
+                        <Label alignment="TOP_LEFT" prefHeight="17.0" prefWidth="266.0" text="Driver" GridPane.rowIndex="14" />
+                        <JFXComboBox fx:id="cbDriver" onAction="#cbDriverAction" prefHeight="25.0" prefWidth="200.0" promptText="Select a driver" GridPane.columnIndex="1" GridPane.rowIndex="14" />
+                        <Label alignment="TOP_LEFT" prefHeight="17.0" prefWidth="266.0" text="Assign Vehicle" GridPane.rowIndex="15" />
+                        <JFXComboBox fx:id="cbVehicle" onAction="#cbVehicleAction" prefHeight="25.0" prefWidth="200.0" promptText="Select a vehicle" GridPane.columnIndex="1" GridPane.rowIndex="15" />
+                        <JFXButton fx:id="btnAddDirver" contentDisplay="GRAPHIC_ONLY" onAction="#btnAddDirverAction" prefHeight="25.0" prefWidth="34.0" GridPane.columnIndex="2" GridPane.rowIndex="14">
+                           <graphic>
+                              <FontAwesomeIconView glyphName="PLUS" />
+                           </graphic>
+                        </JFXButton>
+                        <JFXButton fx:id="btnAddVehicle" contentDisplay="GRAPHIC_ONLY" onAction="#btnAddVehicleAction" prefHeight="25.0" prefWidth="34.0" GridPane.columnIndex="2" GridPane.rowIndex="15">
+                           <graphic>
+                              <FontAwesomeIconView glyphName="PLUS" />
+                           </graphic>
+                        </JFXButton>
+                        <JFXButton fx:id="btnAssignDriver" onAction="#btnAssignDriverAction" prefHeight="34.0" prefWidth="196.0" style="-fx-background-color: #ff9c3c;" text="Assign Driver" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="17" />
+                        <JFXButton fx:id="btn" contentDisplay="RIGHT" graphicTextGap="10.0" onAction="#btnNewOrderAction" prefHeight="43.0" prefWidth="142.0" style="-fx-background-color: #6599FF;" text="New order" textFill="WHITE" GridPane.columnIndex="2">
+                           <graphic>
+                              <FontAwesomeIconView fill="WHITE" glyphName="PLUS" size="20" />
+                           </graphic></JFXButton>
+                        <JFXDatePicker fx:id="pickupDate1" maxWidth="200.0" minWidth="200.0" prefHeight="31.0" prefWidth="200.0" />
+                     </children>
+                  </GridPane>
+               </children>
+            </AnchorPane>
+            <Separator layoutX="561.0" layoutY="13.0" orientation="VERTICAL" prefHeight="602.0" prefWidth="52.0" />
+            <AnchorPane layoutX="614.0" layoutY="6.0" maxWidth="550.0" minWidth="550.0" prefHeight="635.0" prefWidth="550.0" AnchorPane.bottomAnchor="4.0" AnchorPane.rightAnchor="27.0" AnchorPane.topAnchor="6.0">
+               <children>
+                  <GridPane layoutX="43.0" layoutY="3.0" prefHeight="258.0" prefWidth="502.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="48.0" AnchorPane.topAnchor="3.0">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="151.0" minWidth="10.0" prefWidth="99.3333740234375" />
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="200.0" minWidth="200.0" prefWidth="200.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="100.0" minWidth="60.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="50.0" minWidth="50.0" prefWidth="50.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints maxHeight="50.0" minHeight="42.0" prefHeight="44.66666793823242" vgrow="SOMETIMES" />
+                      <RowConstraints maxHeight="65.33333587646484" minHeight="40.0" prefHeight="45.33333206176758" vgrow="SOMETIMES" />
+                      <RowConstraints maxHeight="99.33332824707031" minHeight="40.0" prefHeight="57.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="30.0" minHeight="11.333328247070312" prefHeight="11.333328247070312" vgrow="SOMETIMES" />
+                      <RowConstraints maxHeight="48.66667175292969" minHeight="30.0" prefHeight="48.66667175292969" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="48.0" minHeight="10.0" prefHeight="48.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <Label text="Name" GridPane.rowIndex="1" />
+                        <Label text="Desciption" GridPane.rowIndex="2" />
+                        <Label alignment="CENTER" prefHeight="17.0" prefWidth="113.0" text="Weight:(KGs)" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                        <JFXTextField fx:id="txtFreightName" maxHeight="25.0" maxWidth="200.0" minHeight="25.0" minWidth="200.0" prefHeight="25.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <JFXTextArea fx:id="txtFreightDescription" maxWidth="200.0" minWidth="200.0" prefHeight="61.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <Label prefHeight="32.0" prefWidth="94.0" text="FREIGHT DETAILS" textFill="#ff9b3d" />
+                        <JFXTextField fx:id="txtFreightWeight" minWidth="45.0" prefHeight="31.0" prefWidth="45.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                        <JFXButton fx:id="btnAddFreight" onAction="#btnAddFreightAction" prefHeight="36.0" prefWidth="190.0" style="-fx-background-color: #ff9c3c;" text="Add Freight" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                        <Separator prefWidth="200.0" GridPane.rowIndex="5" />
+                        <Separator prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                        <Separator prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="5" />
+                        <Separator prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="5" />
+                     </children>
+                  </GridPane>
+                  <GridPane layoutY="429.0" prefHeight="158.0" prefWidth="550.0">
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="212.33331298828125" minWidth="10.0" prefWidth="212.33331298828125" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="189.6666259765625" minWidth="10.0" prefWidth="53.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="226.0" minWidth="10.0" prefWidth="226.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="189.6666259765625" minWidth="10.0" prefWidth="55.3333740234375" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints maxHeight="40.333343505859375" minHeight="10.0" prefHeight="28.333343505859375" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="154.66665649414062" minHeight="10.0" prefHeight="154.66665649414062" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <children>
+                        <JFXListView fx:id="freightListView" prefHeight="120.0" prefWidth="212.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                        <JFXListView fx:id="driverListView" prefHeight="127.0" prefWidth="213.0" GridPane.rowIndex="1" />
+                        <Label alignment="CENTER" prefHeight="17.0" prefWidth="162.0" text="Driver(s)" textFill="#ff9b3d" />
+                        <Label alignment="CENTER" prefHeight="17.0" prefWidth="186.0" text="Freight" textFill="#ff9b3d" GridPane.columnIndex="2" />
+                        <JFXButton fx:id="btnRemoveDriver" contentDisplay="GRAPHIC_ONLY" onAction="#btnRemoveDriverAction" prefHeight="26.0" prefWidth="42.0" text="Button" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                           <graphic>
+                              <FontAwesomeIconView glyphName="MINUS" size="17" />
+                           </graphic>
+                        </JFXButton>
+                        <JFXButton fx:id="btnRemoveFreight" contentDisplay="GRAPHIC_ONLY" onAction="#btnRemoveFreightAction" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                           <graphic>
+                              <FontAwesomeIconView glyphName="MINUS" size="17" />
+                           </graphic>
+                        </JFXButton>
+                     </children>
+                  </GridPane>
+                  <JFXButton fx:id="btnCompleteOrder" layoutX="265.0" layoutY="594.0" onAction="#btnCompleteOrderAction" prefHeight="43.0" prefWidth="227.0" style="-fx-background-color: #2fc4a4;" text="Complete Order " textFill="WHITE" />
+                  <Label fx:id="lblCost" layoutX="151.0" layoutY="376.0" prefHeight="32.0" prefWidth="94.0" text="Kshs 300,000" />
+                  <Label layoutY="261.0" prefHeight="32.0" prefWidth="94.0" text="CHARGES" textFill="#ff9b3d" />
+                  <JFXListView fx:id="costsListView" layoutX="263.0" layoutY="277.0" maxHeight="130.0" minHeight="130.0" prefHeight="130.0" prefWidth="230.0" />
+                  <Label fx:id="lblCost1" layoutX="19.0" layoutY="376.0" prefHeight="32.0" prefWidth="120.0" text="Total Amount Due:" />
+                  <JFXComboBox fx:id="cbCosts" layoutX="14.0" layoutY="305.0" onAction="#cbCostsAction" prefHeight="25.0" prefWidth="108.0" promptText="Select a cost" />
+                  <JFXButton fx:id="btnRemoveCost" contentDisplay="GRAPHIC_ONLY" layoutX="493.0" layoutY="329.0" onAction="#btnRemoveCostAction">
+                     <graphic>
+                        <FontAwesomeIconView glyphName="MINUS" size="17" />
+                     </graphic>
+                  </JFXButton>
+                  <JFXButton fx:id="btnAddcost" contentDisplay="GRAPHIC_ONLY" layoutX="230.0" layoutY="329.0" onAction="#btnAddCostAction">
+                     <graphic>
+                        <FontAwesomeIconView glyphName="PLUS" size="17" />
+                     </graphic>
+                  </JFXButton>
+                  <JFXTextField fx:id="txtMultiplier" layoutX="11.0" layoutY="342.0" maxWidth="120.0" minWidth="120.0" prefHeight="31.0" prefWidth="120.0" promptText="Muliplier" visible="false" />
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+   </children>
+</StackPane>

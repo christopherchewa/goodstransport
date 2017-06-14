@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane style="-fx-background-color: #6599FF;" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="logistics.controllers.LogoutButtonController">
+   <children>
+      <JFXButton fx:id="btnLogout" accessibleText="Logout_Button" contentDisplay="GRAPHIC_ONLY" maxHeight="15.0" maxWidth="15.0" minHeight="15.0" minWidth="15.0" onAction="#btnLogoutAction" opacity="0.73" prefHeight="15.0" prefWidth="15.0" style="-fx-background-color: #6599FF;" text="Logout">
+         <graphic>
+            <FontAwesomeIconView fill="#fc0000" glyphName="POWER_OFF" size="15" />
+         </graphic></JFXButton>
+   </children>
+</AnchorPane>

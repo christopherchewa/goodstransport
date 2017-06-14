@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="760.0" maxWidth="1366.0" minHeight="760.0" minWidth="1366.0" prefHeight="760.0" prefWidth="1366.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="logistics.controllers.MainLayoutController">
+   <left>
+      <VBox prefHeight="619.0" prefWidth="139.0" style="-fx-background-color: #2fc4a4; -fx-effect: dropshadow(gaussian, rgb(0.0, 0.0, 0.0, 0.15), 6.0, 0.7, 0.0,1.5);" BorderPane.alignment="CENTER">
+         <BorderPane.margin>
+            <Insets top="1.0" />
+         </BorderPane.margin>
+         <children>
+            <JFXButton fx:id="btnMyProfile" alignment="CENTER" contentDisplay="TOP" layoutX="40.0" layoutY="40.0" onAction="#btnMyProfileAction" prefHeight="80.0" prefWidth="140.0" style="-fx-alignment: left;" styleClass="nav-button" text="Home" textFill="WHITE">
+               <font>
+                  <Font name="Roboto Bold" size="14.0" />
+               </font>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+               <graphic>
+                  <FontAwesomeIconView fill="WHITE" glyphName="HOME" size="17" />
+               </graphic>
+            </JFXButton>
+            <JFXButton fx:id="btnOrders" alignment="CENTER" contentDisplay="TOP" onAction="#btnOrdersAction" prefHeight="80.0" prefWidth="139.0" style="-fx-alignment: left;" styleClass="nav-button" text="Orders" textFill="WHITE">
+               <font>
+                  <Font name="Roboto Bold" size="14.0" />
+               </font>
+               <graphic>
+                  <FontAwesomeIconView fill="WHITE" glyphName="DASHBOARD" size="17" />
+               </graphic>
+            </JFXButton>
+            <JFXButton fx:id="btnUsers" alignment="CENTER" contentDisplay="TOP" onAction="#btnUsersAction" prefHeight="80.0" prefWidth="139.0" style="-fx-alignment: left;" styleClass="nav-button" text="Users" textFill="WHITE">
+               <font>
+                  <Font name="Roboto Bold" size="14.0" />
+               </font>
+               <graphic>
+                  <FontAwesomeIconView fill="WHITE" glyphName="USERS" size="17" />
+               </graphic>
+            </JFXButton>
+            <JFXButton fx:id="btnVehicles" alignment="CENTER" contentDisplay="TOP" onAction="#btnVehiclesAction" prefHeight="80.0" prefWidth="139.0" style="-fx-alignment: left;" styleClass="nav-button" text="Vehicles" textFill="WHITE">
+               <font>
+                  <Font name="Roboto Bold" size="14.0" />
+               </font>
+               <graphic>
+                  <FontAwesomeIconView fill="WHITE" glyphName="TRUCK" size="17" />
+               </graphic>
+            </JFXButton>
+            <JFXButton fx:id="btnCosts" alignment="CENTER" contentDisplay="TOP" onAction="#btnCostsAction" prefHeight="80.0" prefWidth="139.0" style="-fx-alignment: left;" styleClass="nav-button" text="Costs" textFill="WHITE">
+               <font>
+                  <Font name="Roboto Bold" size="14.0" />
+               </font>
+               <graphic>
+                  <FontAwesomeIconView fill="WHITE" glyphName="CREDIT_CARD" size="17" />
+               </graphic>
+            </JFXButton>
+            <JFXButton fx:id="btnReports" alignment="CENTER" contentDisplay="TOP" prefHeight="80.0" prefWidth="139.0" style="-fx-alignment: left;" styleClass="nav-button" text="Reports" textFill="WHITE">
+               <font>
+                  <Font name="Roboto Bold" size="14.0" />
+               </font>
+               <graphic>
+                  <FontAwesomeIconView fill="WHITE" glyphName="FILES_ALT" size="17" />
+               </graphic>
+            </JFXButton>
+            <JFXButton id="logout-button" fx:id="btnLogout" contentDisplay="GRAPHIC_ONLY" onAction="#btnLogoutAction" onMouseEntered="#logoutButtonOnHover" onMouseExited="#logoutButtonOffHover" prefHeight="54.0" prefWidth="49.0" text="Button">
+               <graphic>
+                  <FontAwesomeIconView fx:id="logoutIcon" fill="WHITE" glyphName="POWER_OFF" size="30" styleClass="logout-icon" />
+               </graphic>
+               <VBox.margin>
+                  <Insets bottom="20.0" left="45.0" top="80.0" />
+               </VBox.margin>
+            </JFXButton>
+         </children>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </VBox>
+   </left>
+   <top>
+      <VBox prefHeight="75.0" prefWidth="1280.0" BorderPane.alignment="CENTER">
+         <children>
+            <Pane opacity="0.77" prefHeight="35.0" prefWidth="1280.0" style="-fx-background-color: #6599FF;">
+               <children>
+                  <Label alignment="CENTER" layoutX="-1.0" layoutY="1.0" prefHeight="36.0" prefWidth="1280.0" text="FAST TRUCK LOGISTICS COMPANY" textFill="WHITE">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+               </children></Pane>
+            <Pane prefHeight="38.0" prefWidth="1280.0" style="-fx-background-color: #6599FF;">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+               <children>
+                  <HBox alignment="CENTER_RIGHT" layoutY="4.0" prefHeight="25.0" prefWidth="1280.0" spacing="20.0">
+                     <children>
+                        <Label alignment="CENTER" prefHeight="27.0" prefWidth="57.0" text="Hello," textFill="WHITE">
+                           <font>
+                              <Font name="Verdana" size="16.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                        </Label>
+                        <Label fx:id="lblUsername" prefHeight="27.0" text="Username" textFill="WHITE">
+                           <font>
+                              <Font name="Verdana" size="16.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                        </Label>
+                        <Separator orientation="VERTICAL" prefHeight="0.0" />
+                        <JFXButton fx:id="btnAccount" contentDisplay="RIGHT" graphicTextGap="20.0" onAction="#btnAccountAction" prefHeight="30.0" prefWidth="128.0" text="View Profile" textFill="WHITE">
+                           <graphic>
+                              <FontAwesomeIconView fill="WHITE" glyphName="CIRCLE" size="12" />
+                           </graphic>
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </JFXButton>
+                     </children>
+                     <padding>
+                        <Insets left="10.0" right="10.0" />
+                     </padding>
+                  </HBox>
+               </children>
+            </Pane>
+         </children>
+      </VBox>
+   </top>
+   <center>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+   </center>
+</BorderPane>

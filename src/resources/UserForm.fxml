@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXDrawer?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<AnchorPane id="AnchorPane" maxHeight="455.0" maxWidth="455.0" minHeight="455.0" minWidth="455.0" prefHeight="455.0" prefWidth="455.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="logistics.controllers.UserFormController">
+   <children>
+      <JFXDrawer fx:id="userDrawer" defaultDrawerSize="300.0" direction="BOTTOM" layoutX="24.0" layoutY="173.0" maxHeight="300.0" minHeight="282.0" prefHeight="282.0" prefWidth="455.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="173.0" />
+      <GridPane layoutX="42.0" layoutY="32.0" prefHeight="326.0" prefWidth="371.0">
+        <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="258.0" minWidth="10.0" prefWidth="30.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="421.0" minWidth="10.0" prefWidth="341.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints maxHeight="50.0" minHeight="50.0" prefHeight="50.0" />
+            <RowConstraints maxHeight="20.0" minHeight="20.0" prefHeight="20.0" />
+          <RowConstraints maxHeight="50.0" minHeight="50.0" prefHeight="50.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="20.0" minHeight="20.0" prefHeight="20.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="50.0" minHeight="50.0" prefHeight="50.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="20.0" minHeight="20.0" prefHeight="20.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="50.0" minHeight="50.0" prefHeight="50.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="20.0" minHeight="20.0" prefHeight="20.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="50.0" minHeight="50.0" prefHeight="50.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="20.0" minHeight="20.0" prefHeight="20.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="50.0" minHeight="50.0" prefHeight="50.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <JFXTextField fx:id="txtLastName" labelFloat="true" maxWidth="337.0" minWidth="337.0" prefHeight="31.0" prefWidth="337.0" promptText="Last Name" GridPane.columnIndex="1" />
+            <JFXTextField fx:id="txtFirstName" labelFloat="true" promptText="First Name" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <FontAwesomeIconView glyphName="ENVELOPE" size="20" GridPane.rowIndex="4" />
+            <JFXTextField fx:id="txtEmail" maxWidth="340.0" minWidth="189.0" prefHeight="31.0" prefWidth="340.0" promptText="Email Address" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <FontAwesomeIconView glyphName="TTY" size="20" GridPane.rowIndex="6" />
+            <JFXTextField fx:id="txtPhoneNumber" promptText="Phone Number" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+            <FontAwesomeIconView glyphName="USER" size="20" GridPane.rowIndex="8" />
+            <JFXComboBox fx:id="cbUserType" onAction="#cbUserTypeAction" promptText="Select User Type" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+            <ButtonBar prefHeight="50.0" prefWidth="168.0" GridPane.columnIndex="1" GridPane.rowIndex="10">
+               <buttons>
+                  <Label alignment="CENTER_RIGHT" prefHeight="17.0" prefWidth="184.0" text="Step 1 of 2" />
+                  <JFXButton fx:id="btnNextStep" onAction="#btnNextStepAction" prefHeight="50.0" prefWidth="138.0" text="Next" />
+               </buttons>
+            </ButtonBar>
+            <Label fx:id="lblUserType" contentDisplay="GRAPHIC_ONLY" text="Label" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="8">
+               <GridPane.margin>
+                  <Insets left="150.0" />
+               </GridPane.margin>
+               <graphic>
+                  <FontAwesomeIconView fill="RED" glyphName="EXCLAMATION_TRIANGLE" size="12" />
+               </graphic>
+            </Label>
+         </children>
+      </GridPane>
+   </children>
+</AnchorPane>

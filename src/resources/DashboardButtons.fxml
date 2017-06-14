@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+
+<AnchorPane maxHeight="40.0" maxWidth="260.0" minHeight="40.0" minWidth="260.0" prefHeight="40.0" prefWidth="260.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="logistics.controllers.DashboardButtonsController">
+   <children>
+      <HBox layoutX="1.0" layoutY="1.0" maxHeight="40.0" maxWidth="260.0" minHeight="40.0" minWidth="260.0" prefHeight="40.0" prefWidth="260.0" spacing="20.0" style="-fx-background-color: white;">
+         <children>
+            <JFXButton fx:id="btnNewOrder" contentDisplay="RIGHT" graphicTextGap="10.0" maxHeight="39.0" maxWidth="120.0" minHeight="39.0" minWidth="120.0" onAction="#btnNewOrderAction" prefHeight="39.0" prefWidth="120.0" style="-fx-background-color: #2fc4a4;" text="Create Order" textFill="WHITE">
+               <graphic>
+                  <FontAwesomeIconView fill="WHITE" glyphName="PLUS" size="20" />
+               </graphic>
+            </JFXButton>
+            <JFXButton fx:id="btnNewCost" contentDisplay="RIGHT" graphicTextGap="10.0" maxHeight="39.0" maxWidth="120.0" minHeight="39.0" minWidth="120.0" onAction="#btnNewCostAction" prefHeight="39.0" prefWidth="120.0" style="-fx-background-color: #2fc4a4;" text="Add cost" textFill="WHITE">
+               <graphic>
+                  <FontAwesomeIconView fill="WHITE" glyphName="PLUS" size="20" />
+               </graphic>
+            </JFXButton>
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>

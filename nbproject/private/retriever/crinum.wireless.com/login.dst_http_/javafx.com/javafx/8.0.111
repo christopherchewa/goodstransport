@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Crinum Wi-Fi</title>
+	<link rel="shortcut icon" type="image/png" href="favicon.png"/> 
+  <!-- CSS  -->
+  <link href="css/font.css" rel="stylesheet">
+  <link href="css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  
+<style type="text/css">
+html,
+body {
+    height: 100%;
+}
+.margin {
+  margin: 0 !important;
+}
+.icon-block {
+  padding: 0 15px;
+}
+.icon-block .material-icons {
+	font-size: inherit;
+</style>
+</head>
+<body>
+
+
+	<form name="sendin" action="http://crinum.wireless.com/login" method="post">
+		<input type="hidden" name="username" />
+		<input type="hidden" name="password" />
+		<input type="hidden" name="dst" value="http://javafx.com/javafx/8.0.111" />
+		<input type="hidden" name="popup" value="true" />
+	</form>
+	
+	<script type="text/javascript" src="/md5.js"></script>
+	<script type="text/javascript">
+	<!--
+	    function doLogin() {
+		document.sendin.username.value = document.login.username.value;
+		document.sendin.password.value = hexMD5('\276' + document.login.password.value + '\203\347\336\046\024\371\267\175\271\352\156\337\242\027\066\317');
+		document.sendin.submit();
+		return false;
+	    }
+	//-->
+	</script>
+
+
+<!-- Menu Top Navbar -->
+  <nav class="light-blue darken-3 z-depth-2" role="navigation">
+    <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo" style="font-size:20px;"><i class="material-icons left">perm_identity</i>Crinum Hotspot</a>
+      <ul class="right hide-on-med-and-down">
+        <li><a href="#modal1" class="modal-trigger">Contact us</a></li>
+      </ul>
+    </div>  
+  </nav>
+  
+ <!-- Menu Top Navbar --> 
+   <div class="section no-pad-bot" id="index-banner">
+    <div class="container">
+      <br><br>
+      <div class="row">
+		<div class="col s12 m12 l7 hide-on-med-and-down">
+			<h3 class="header col s12 left blue-text text-darken-2">Internet Packages</h3>
+			<h5 class="col s12 left grey-text text-darken-3">Pocket Friendly</h5>
+			<table class="table table-striped" style="font-size: 80%;">
+								<thead>
+									<tr>
+										<th>#</th>
+										<th>Subscription</th>
+										<th>Duration</th>
+										<th>Devices</th>
+										<th>Amount</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>1</td>
+										<td>Daily</td>
+										<td>24 Hrs</td>
+										<td>2</td>
+										<td>50/=</td>
+									</tr>
+									<tr>
+										<td>2</td>
+										<td>Weekly</td>
+										<td>7 Days</td>
+										<td>2</td>
+										<td>300/=</td>
+									</tr>
+									<tr>
+										<td>3</td>
+										<td>Monthly</td>
+										<td>30 Days</td>
+										<td>2</td>
+										<td>999/=</td>
+									</tr>
+									
+								</tbody>
+							</table>  
+		</div>
+		<div class="col s12 m12 l5" style="border: 1px solid #e0e0e0;padding: 20px;">
+			<form class="login-form" name="login" action="http://crinum.wireless.com/login" method="post"
+				 onSubmit="return doLogin()" >
+		
+				<input type="hidden" name="dst" value="http://javafx.com/javafx/8.0.111" />
+				<input type="hidden" name="popup" value="true" />
+				
+				<div class="row" style="border-bottom: 1px solid #ccc">
+				  <div class="input-field">
+					<img class="responsive-img" src="img/Logo_Main.png" alt="Member Login" />
+					<!-- <h5 class="header col s12 left blue-text text-darken-2"><i class="medium material-icons margin">new_releases</i>&nbsp;&nbsp;Login Disini</h5> -->
+				  </div>
+				</div>
+				
+				<div class="row margin">
+				  <div class="input-field">
+					<i class="material-icons prefix">perm_identity</i>
+					<input id="username" type="text" name="username" value="">
+					<label for="username">Username</label>
+				  </div>
+				</div>
+				
+				<div class="row margin">
+				  <div class="input-field">
+					<i class="material-icons prefix">lock</i>
+					<input id="password" type="password" name="password">
+					<label for="password">Password</label>
+				  </div>
+				  <p> By Clicking Login You Agree to the terms of Usage</p>
+				</div>
+				
+				<div class="row margin">
+				  <div class="input-field col s12">
+					<button type="submit" class="btn waves-effect waves-light col s12 light-blue darken-2" value="OK">Login</button>
+				  </div>				
+				</div>
+				
+				<div class="row">
+				  <div class="input-field col s6 m6 l6">
+					  <p class="margin medium-small"><a href="#modal1" class="modal-trigger">Get Voucher!</a></p>
+				  </div>
+				  <div class="input-field col s6 m6 l6">
+					  
+					  
+					  
+				  </div>          
+				</div>
+			</form>
+		</div>
+      </div>
+	  <br><br>
+
+    </div>
+  </div>
+
+  <footer class="page-footer light-blue darken-3 z-depth-5">
+    <div class="container">
+      <div class="row">
+        <div class="col l12 s12">
+          <h5 class="white-text">Terms of Usage.</h5>
+          <p class="grey-text text-lighten-4">We kindly direct your attention to the fact that your internet usage can be traced back to you. Upon request from an authorized authority,Crinum Digital Solutions must according to the law provide information about this if required. The Wi-Fi net can only be used within the limits set by legislation and rules for example for copyright. In case of suspected misuse, Crinum Digital Solutions can go through the log and the user can be immediately banned from the Wi-Fi net, without any form of refund.</p>
+        </div>
+        
+      </div>
+    </div>
+    <div class="footer-copyright light-blue darken-4">
+      <div class="container ">
+      &copy 2017 Crinum Digital Solutions . All rights reserved
+      </div>
+    </div>
+  </footer>
+
+	<!-- Modal Structure -->
+	  <div id="modal1" class="modal">
+			<div class="modal-content">
+			  <h4>WiFi Internet Hotspot</h4>
+			  <p>Kami penyedia layanan koneksi internet menggunakan hotspot voucher. Layanan internet Hotspot 24 Jam dengan koneksi cepat dan Stabil.</p>
+			  <table class="striped">
+			  <tr>
+				<td style="width:30px;"><i class="material-icons">business</i></td>
+				<td>Gigatt Hse No. F39</td>
+			  </tr>
+			  <tr>
+				<td><i class="material-icons">call</i></td>
+				<td>0705735903</td>
+			  </tr>
+			  <tr>
+				<td><i class="material-icons">grade</i></td>
+				<td>crinum.wireless.com</td>
+			  </tr>
+			</table>
+			</div>
+			<div class="modal-footer">
+				<a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat"><i class="material-icons left">thumb_up</i>Thumbs Up</a>
+			</div>	
+     </div>	  
+
+<!--  Scripts-->
+  <script src="js/jquery.min.js"></script>
+  <script src="js/materialize.min.js"></script>
+  <script src="js/init.js"></script>
+  
+  <script>
+	$(document).ready(function() {
+	  // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+	  $('.modal-trigger').leanModal();
+	});
+  </script>
+  
+  
+
+  <script type="text/javascript">
+	  <!--
+	  document.login.username.focus();
+	  //-->
+  </script>
+
+  </body>
+</html>
