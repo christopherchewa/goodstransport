@@ -57,10 +57,17 @@ public class Transport extends Application implements LayoutInterface{
               private static StackPane ordersStackPane;
               private static StackPane orderFormStackPane;
               private static StackPane reportsStackPane;
-              private final LoginController loginController = new LoginController();
-              private final MainLayoutController mainLayoutController = new MainLayoutController();
-              private final DashboardButtonsController dashboardButtonsController = new DashboardButtonsController();
-              private final UsersPageController usersPageController = new UsersPageController();
+              private LoginController loginController;
+              private MainLayoutController mainLayoutController;
+              private DashboardButtonsController dashboardButtonsController;
+              private UsersPageController usersPageController;
+
+    public Transport() {
+        this.mainLayoutController = new MainLayoutController();
+        this.loginController = new LoginController();
+         this.dashboardButtonsController= new DashboardButtonsController();
+         this.usersPageController = new UsersPageController();
+    }
               
               
    @Override

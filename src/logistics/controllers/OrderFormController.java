@@ -176,7 +176,7 @@ private Freight freight;
     public void setLayout() 
     {
         layout = new Layout();
-        layout.setOrdersPageController(this);
+        layout.setOrderFormController(this);
     }
     
     
@@ -370,6 +370,14 @@ private Freight freight;
     private void btnNewOrderAction(ActionEvent event) {
         
         order = new Order();
+        
+        //use get to get String from String property
+        System.out.println("ref Id will be requested...");
+        order.set("order_ref_id", order.setOrderRefIdProperty().get());
+        System.out.println("From order form controller: " + order.setOrderRefIdProperty());
+        System.out.println("ref Id obtained...");
+        
+        
         order.saveIt();
         
     }

@@ -80,7 +80,6 @@ public class DataManagement implements LayoutInterface {
     public void loadVehiclesTable(ObservableList<Vehicle> vehicleList, TableView vehiclesTable)
     {
       
-     
       vehicleList.removeAll(vehicleList);
       List<Vehicle> vehicleData = Vehicle.findAll();
       

@@ -71,8 +71,6 @@ public class LoginController implements Initializable, LayoutInterface {
     @FXML
     private JFXButton btnLogin;
 
-    @FXML
-    private Label linkForgot;
     
     private Layout layout;
     

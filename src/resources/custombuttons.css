@@ -14,6 +14,10 @@ and open the template in the editor.
     -fx-border-color: white;
 }
 
-
-
+ 
+/*remove border from list views*/
+.orderListViews{
     
+    -fx-background-insets: 0;
+    -fx-padding: 0;
+} 

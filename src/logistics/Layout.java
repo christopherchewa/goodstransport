@@ -44,6 +44,7 @@ import logistics.controllers.UsersPageController;
 import logistics.controllers.VehicleFormController;
 import logistics.controllers.VehiclesPageController;
 import logistics.controllers.OrderFormController;
+import logistics.controllers.OrdersPageController;
 import logistics.controllers.UserFormController;
 import logistics.models.User;
 import org.controlsfx.control.Notifications;
@@ -71,20 +72,25 @@ import org.controlsfx.control.Notifications;
     
     
     
-   private static MainLayoutController mainLayoutController;
     private static LoginController loginController;
+    private static MainLayoutController mainLayoutController;
     private static HomePageController homePageController;
-     private static VehiclesPageController vehiclesPageController;
+  
      private static VehicleFormController vehicleFormController;
-     
-     private static DashboardController dashboardController;    
-     private static CostsPageController costsPageController;
-     private static UsersPageController usersPageController;
-     private static OrderFormController ordersPageController;
+      private static OrderFormController orderFormController;
+      private static UserFormController userFormController;
      private static AddressFormController addressFormController;
      private static AdminEmployeeInfoController adminEmployeeInfoController;
      private static ConsigneeInfoController ConsigneeInfoController;
-     private static UserFormController userFormController;
+     
+     private static UsersPageController usersPageController;
+     private static VehiclesPageController vehiclesPageController;
+     private static DashboardController dashboardController;    
+     private static CostsPageController costsPageController;
+     private static OrdersPageController ordersPageController;
+    
+     
+     
 
     
      
@@ -299,14 +305,24 @@ import org.controlsfx.control.Notifications;
     Layout.costsPageController = costsPageController;
 }
     
-     public OrderFormController getOrdersPageController()
+     public OrdersPageController getOrdersPageController()
 {
     return ordersPageController;
 }
     
-    public void setOrdersPageController(OrderFormController ordersPageController)
+    public void setOrdersPageController(OrdersPageController ordersPageController)
 {
     Layout.ordersPageController = ordersPageController;
+}
+    
+    public OrderFormController getOrderFormController()
+{
+    return orderFormController;
+}
+    
+    public void setOrderFormController(OrderFormController orderFormController)
+{
+    Layout.orderFormController = orderFormController;
 }
    
       public MainLayoutController getMainLayoutController()

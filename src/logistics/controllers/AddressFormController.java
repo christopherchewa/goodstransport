@@ -77,7 +77,7 @@ private final String consignee = "Consignee";
         }
         catch(Exception e)
         {
-            oldUser = layout.getOrdersPageController().getConsigneeObj();
+            oldUser = layout.getOrderFormController().getConsigneeObj();
             user = oldUser;
             System.out.println(oldUser);
         }
@@ -135,17 +135,17 @@ private final String consignee = "Consignee";
                     {
                         
                        dataManagement.getConsignerFullNamesList().removeAll(dataManagement.getConsignerFullNamesList());
-                        dataManagement.setConsignersList(layout.getOrdersPageController().getConsginerCombo());
+                        dataManagement.setConsignersList(layout.getOrderFormController().getConsginerCombo());
                         //layout.getOrdersPageController().getLists();
-                        layout.getOrdersPageController().getConsginerCombo().getSelectionModel().selectLast();
+                        layout.getOrderFormController().getConsginerCombo().getSelectionModel().selectLast();
                        // layout.getOrdersPageController().getConsginerCombo().getSelectionModel().getSelectedItem();
                         
                     }
             if(user.getString("user_type").equals(shipper))
                     {
                        dataManagement.getShipperFullNamesList().removeAll(dataManagement.getShipperFullNamesList());
-                        dataManagement.setShippersList(layout.getOrdersPageController().getShipperCombo());
-                        layout.getOrdersPageController().getShipperCombo().getSelectionModel().selectLast();
+                        dataManagement.setShippersList(layout.getOrderFormController().getShipperCombo());
+                        layout.getOrderFormController().getShipperCombo().getSelectionModel().selectLast();
                         //layout.getOrdersPageController().getShipperCombo().getSelectionModel().getSelectedItem();
                         
                         
@@ -153,8 +153,8 @@ private final String consignee = "Consignee";
             if(user.getString("user_type").equals(driver))
                     {
                    dataManagement.getDriverFullNamesList().removeAll(dataManagement.getDriverFullNamesList());
-                        dataManagement.setDriversList(layout.getOrdersPageController().getDriverCombo());
-                        layout.getOrdersPageController().getDriverCombo().getSelectionModel().selectLast();
+                        dataManagement.setDriversList(layout.getOrderFormController().getDriverCombo());
+                        layout.getOrderFormController().getDriverCombo().getSelectionModel().selectLast();
                    
                         
                     
@@ -162,11 +162,11 @@ private final String consignee = "Consignee";
             if(user.getString("user_type").equals(consignee))
                     {
                         dataManagement.getConsigneeFullNamesList().removeAll(dataManagement.getConsigneeFullNamesList());
-                        dataManagement.setConsigneesList(layout.getOrdersPageController().getConsigneeCombo());
+                        dataManagement.setConsigneesList(layout.getOrderFormController().getConsigneeCombo());
                         if(user.equals(newUser))
                         {
                             
-                            layout.getOrdersPageController().getConsigneeCombo().getSelectionModel().selectLast();
+                            layout.getOrderFormController().getConsigneeCombo().getSelectionModel().selectLast();
                          
                         }
                         //layout.getOrdersPageController().getConsigneeCombo().getSelectionModel().getSelectedItem();
