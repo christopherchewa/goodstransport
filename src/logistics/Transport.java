@@ -23,14 +23,19 @@ import javafx.scene.Group;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableView;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import logistics.controllers.DashboardButtonsController;
+import logistics.controllers.DashboardController;
+import logistics.controllers.HomePageController;
 import logistics.controllers.LoginController;
 import logistics.controllers.MainLayoutController;
+import logistics.controllers.OrdersPageController;
 import logistics.controllers.UsersPageController;
 import logistics.models.Vehicle;
 
@@ -49,7 +54,10 @@ public class Transport extends Application implements LayoutInterface{
               private final String vehiclesPage = "/resources/VehiclesPage.fxml";
               private final String ordersPage = "/resources/OrdersPage.fxml";
               private final String orderForm = "/resources/OrderForm.fxml";
+             
               
+              private static AnchorPane homeDashboardAnchorPane;
+              private static AnchorPane orderDashboardAnchorPane;
               private static StackPane homeStackPane;
               private static StackPane usersStackPane;
               private static StackPane vehiclesStackPane;
@@ -57,14 +65,24 @@ public class Transport extends Application implements LayoutInterface{
               private static StackPane ordersStackPane;
               private static StackPane orderFormStackPane;
               private static StackPane reportsStackPane;
+              
+              private Label homeUserTypeLabel;
+              private Label orderUserTypeLabel;
+              
               private LoginController loginController;
               private MainLayoutController mainLayoutController;
+              private HomePageController homePageController;
+              private OrdersPageController ordersPageController;
+              private DashboardController dashboardController;
               private DashboardButtonsController dashboardButtonsController;
               private UsersPageController usersPageController;
 
     public Transport() {
         this.mainLayoutController = new MainLayoutController();
         this.loginController = new LoginController();
+        this.dashboardController= new DashboardController();
+        this.homePageController = new HomePageController();
+        this.ordersPageController = new OrdersPageController();
          this.dashboardButtonsController= new DashboardButtonsController();
          this.usersPageController = new UsersPageController();
     }
@@ -112,6 +130,13 @@ public class Transport extends Application implements LayoutInterface{
         
         costsStackPane = layout.loadPage(costsPage);
         mainLayoutController.setCostsStackPane(costsStackPane);
+        
+        homeDashboardAnchorPane = layout.loadTopBar();
+        orderDashboardAnchorPane = layout.loadTopBar();
+        layout.setMyHomeTopAnchorPane(homeDashboardAnchorPane);
+       layout.setMyOrderTopAnchorPane(orderDashboardAnchorPane);
+        
+        
         
         
         

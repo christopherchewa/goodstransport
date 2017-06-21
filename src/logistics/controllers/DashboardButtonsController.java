@@ -6,6 +6,7 @@
 package logistics.controllers;
 
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXDrawer;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -46,7 +47,12 @@ public class DashboardButtonsController implements Initializable, LayoutInterfac
 
     @FXML
     private void btnNewOrderAction(ActionEvent event) {
+        
+       
         layout.getBorderPane().setCenter(orderFormStackPane);
+        
+        //we call showpop since it in its else statement, it closes the drawer if it is open
+        layout.showPopup(layout.getDashboardController().getDashboardDrawer());
     }
 
     @FXML

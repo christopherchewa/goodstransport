@@ -30,10 +30,12 @@ public class DataManagement implements LayoutInterface {
     private final String vehicleInRepair = "In Repair";
     private final String available = vehicleAvailable;
     
-        private final String consigner = "Consigner";
-    private final String shipper = "Shipper";
-    private final String driver = "Driver";
-    private final String consignee = "Consignee";
+    public static final String ADMIN = "Admin";
+    public static final String EMPLOYEE = "Employee";
+    public static final String CONSIGNER = "Consigner";
+    public static final String SHIPPER = "Shipper";
+    public static final String DRIVER = "Driver";
+    public static final String CONSIGNEE = "Consignee";
     
     private List<Vehicle> vehiclesList;
     private List<User> consignersList;
@@ -43,6 +45,8 @@ public class DataManagement implements LayoutInterface {
     
     private Layout layout;
    
+    
+    
     @Override
     public void setLayout()
     {
@@ -61,7 +65,11 @@ public class DataManagement implements LayoutInterface {
     private ObservableList<String> addressList = FXCollections.observableArrayList();
 
    
-    private static HashMap<String, String> userMap = new HashMap<>();
+    private static HashMap<String, String> consignerMap = new HashMap<>();
+    private static HashMap<String, String> shipperMap = new HashMap<>();
+    private static HashMap<String, String> driverMap = new HashMap<>();
+    private static HashMap<String, String> consigneeMap = new HashMap<>();
+   private static HashMap<String, String> userMap = new HashMap<>();
     private static HashMap<String, Integer> vehicleMap = new HashMap<>();
 
     public ObservableList<String> getVehicleStatusList() {
@@ -117,36 +125,9 @@ public class DataManagement implements LayoutInterface {
     
 }
     
-    public void showNotification(String message)
-    {
-    setLayout();
-    layout.getNotifcationTray(message).show();
-    }
     
-    public void performSearch(JFXTextField vehicleSearch, TableView vehiclesTable, FilteredList<Vehicle> filteredVehicleList)
-    {
-        vehicleSearch.textProperty().addListener((observableValue, oldValue, newValue) ->{
-         
-            filteredVehicleList.setPredicate((Predicate<? super Vehicle>) vehicle ->{
-              if(newValue == null || newValue.isEmpty() || newValue == "")
-                {
-                     return true;   
-                }
-              String lowerCaseFilter = newValue.toLowerCase();
-                 if(vehicle.getString("number_plate").toLowerCase().contains(lowerCaseFilter))
-                {
-                    return true;
-                }
-              
-              return false;
-          }); 
-        });
-        
-        SortedList<Vehicle> sortedData = new SortedList<>(filteredVehicleList);
-        
-        sortedData.comparatorProperty().bind(vehiclesTable.comparatorProperty());
-        vehiclesTable.setItems(sortedData);
-    }
+    
+   
     
     public void saveAddress(User user, JFXTextField txtState, JFXTextField txtTown, JFXTextField txtZipcode)
     {
@@ -164,12 +145,17 @@ public class DataManagement implements LayoutInterface {
         
       //  adminsList = User.where("user_type", admin);
         //employeesList = User.where("user_type", employee);
-        consignersList = User.where("user_type = ?", consigner);
+        consignerMap.clear();
+        consignerFullNamesList.removeAll(consignerFullNamesList);
+        consignersList = User.where("user_type = ?", UserTypes.CONSIGNER);
         consignersList.forEach((c) -> {
-             String consginerFirstName = c.getString("first_name");
-             String consginerLastName = c.getString("last_name");
-             String consginerFullNames = consginerFirstName + " " + consginerLastName;
-             consignerFullNamesList.add(consginerFullNames);
+             String consignerFirstName = c.getString("first_name");
+             String consignerLastName = c.getString("last_name");
+             String consignerEmail = c.getString("email");
+             String consignerFullNames = consignerFirstName + " " + consignerLastName;
+             consignerMap.put(consignerFullNames, consignerEmail);
+             
+             consignerFullNamesList.add(consignerFullNames);
          });
         
         consignerComboBox.setItems(consignerFullNamesList);
@@ -179,12 +165,15 @@ public class DataManagement implements LayoutInterface {
     
      public void setShippersList(JFXComboBox shipperComboBox)
     {
-        
-       shippersList = User.where("user_type = ?", shipper);
+        shipperMap.clear();
+        shipperFullNamesList.removeAll(shipperFullNamesList);
+       shippersList = User.where("user_type = ?", UserTypes.SHIPPER);
         shippersList.forEach((s) -> {
              String shipperFirstName = s.getString("first_name");
              String shipperLastName = s.getString("last_name");
+             String shipperEmail = s.getString("email");
              String shipperFullNames = shipperFirstName + " " + shipperLastName;
+             shipperMap.put(shipperFullNames, shipperEmail);
              shipperFullNamesList.add(shipperFullNames);
              
          });
@@ -193,15 +182,15 @@ public class DataManagement implements LayoutInterface {
      
       public void setDriversList(JFXComboBox driverComboBox)
     {
-        userMap.clear();
+        driverMap.clear();
         driverFullNamesList.removeAll(driverFullNamesList);
-        driversList = User.where("user_type = ? and driver_status = ?", driver, available);
+        driversList = User.where("user_type = ? and driver_status = ?", UserTypes.DRIVER, available);
         driversList.forEach((d) -> {
              String driverFirstName = d.getString("first_name");
              String driverLastName = d.getString("last_name");
              String driverEmail = d.getString("email");
              String driverFullNames = driverFirstName + " " + driverLastName;
-             userMap.put(driverFullNames, driverEmail);
+             driverMap.put(driverFullNames, driverEmail);
              driverFullNamesList.add(driverFullNames);
              
          });
@@ -210,13 +199,15 @@ public class DataManagement implements LayoutInterface {
       
        public void setConsigneesList(JFXComboBox consigneeComboBox)
     {
-        consigneesList = User.where("user_type = ?", consignee);
+        consigneeMap.clear();
+        consigneeFullNamesList.removeAll(consigneeFullNamesList);
+        consigneesList = User.where("user_type = ?", UserTypes.CONSIGNEE);
         consigneesList.forEach((cc) -> {
              String consigneeFirstName = cc.getString("first_name");
              String consigneeLastName = cc.getString("last_name");
              String consigneeEmail = cc.getString("email");
              String consigneeFullNames = consigneeFirstName + " " + consigneeLastName;
-             userMap.put(consigneeFullNames, consigneeEmail);
+             consigneeMap.put(consigneeFullNames, consigneeEmail);
              consigneeFullNamesList.add(consigneeFullNames);
              
          });
@@ -225,6 +216,8 @@ public class DataManagement implements LayoutInterface {
         
         public void setVehicleList(JFXComboBox vehicleComboBox)
     {
+        vehicleMap.clear();
+        vehicleNumberPlateList.removeAll(vehicleNumberPlateList);
         vehiclesList = Vehicle.where("vehicle_status = ?", available);
         vehiclesList.forEach((v) -> {
             int vehicleId = v.getInteger("vehicle_id");
@@ -235,6 +228,8 @@ public class DataManagement implements LayoutInterface {
          });
         vehicleComboBox.setItems(vehicleNumberPlateList);
     }
+        
+        
         
      public ObservableList<String> getConsignerFullNamesList() {
         return consignerFullNamesList;
@@ -283,12 +278,13 @@ public class DataManagement implements LayoutInterface {
         this.addressList = addressList;
     }
     
+     
     public HashMap<String, String> getUserMap() {
         return userMap;
     }
 
     public void setUserMap(HashMap<String, String> userMap) {
-        this.userMap = userMap;
+        DataManagement.userMap = userMap;
     }
 
     public HashMap<String, Integer> getVehicleMap() {
@@ -296,9 +292,36 @@ public class DataManagement implements LayoutInterface {
     }
 
     public void setVehicleMap(HashMap<String, Integer> vehicleMap) {
-        this.vehicleMap = vehicleMap;
+        DataManagement.vehicleMap = vehicleMap;
+    }
+
+    public HashMap<String, String> getConsignerMap() {
+        return consignerMap;
+    }
+
+    public HashMap<String, String> getShipperMap() {
+        return shipperMap;
+    }
+
+    public HashMap<String, String> getDriverMap() {
+        return driverMap;
+    }
+
+    public HashMap<String, String> getConsigneeMap() {
+        return consigneeMap;
     }
     
-    
+    public void setUserTypes(String admin, String employee, String consigner, String shipper, String driver, String consignee)
+    {
+      
+       /*admin = this.admin;
+       employee = this.employee;
+       consigner = this.consigner;
+       shipper = this.shipper;
+       driver = this.driver;
+       consignee = this.consignee;*/
+        
+    }
+
 
 }

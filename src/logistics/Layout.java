@@ -7,6 +7,7 @@ package logistics;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDrawer;
+import insidefx.undecorator.Undecorator;
 import insidefx.undecorator.UndecoratorScene;
 import java.io.IOException;
 import java.util.HashSet;
@@ -14,13 +15,16 @@ import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.animation.RotateTransition;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -29,8 +33,10 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Modality;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import javafx.stage.WindowEvent;
 import javafx.util.Duration;
 import logistics.controllers.AddressFormController;
 import logistics.controllers.AdminEmployeeInfoController;
@@ -61,14 +67,13 @@ import org.controlsfx.control.Notifications;
     private static UndecoratorScene mainUndecoratorScene;
     private static Stage dialogStage;
     private static FXMLLoader mainFxmlLoader ;
-    private FXMLLoader loginFxmlLoader; 
+    private static FXMLLoader dashFxml;
+    private static FXMLLoader loginFxmlLoader; 
     private FXMLLoader smallFxmlLoader;
     private static FXMLLoader dialogFxmlLoader;
     private static Stage mainStage;
 
-    
-    private AnchorPane anchorPane;
-   
+    private static AnchorPane dashboard;
     
     
     
@@ -88,21 +93,18 @@ import org.controlsfx.control.Notifications;
      private static DashboardController dashboardController;    
      private static CostsPageController costsPageController;
      private static OrdersPageController ordersPageController;
-    
-     
-     
-
-    
-     
-    private Notifications notificationBuilder;
-    private Image img;
-
-    
-    public Layout() {
-       
+     private Notifications notificationBuilder;
+     private Image img;
+    private static AnchorPane myHomeTopAnchorPane;
+    private static AnchorPane myOrderTopAnchorPane;
+    private Label homeUserTypeLabel;
+    private Label orderUserTypeLabel;
         
         
-    }
+        
+        public Layout() {
+
+        }
 
     
     public void initLoginLayout(Stage loginStage,String resource){
@@ -134,12 +136,7 @@ import org.controlsfx.control.Notifications;
                       mainUndecoratorScene.setFadeInTransition();
                       mainStage.setScene(mainUndecoratorScene);
                       mainStage.setTitle("FAST TRUCK LOGISTICS");
-                      mainStage.setMinHeight(728);
-                      mainStage.setMinWidth(1400);
-                      mainStage.toFront();
-                      mainStage.centerOnScreen();
                       mainStage.show();
-                      
                   } catch (IOException ex) {
                       ex.printStackTrace();
                   }
@@ -213,13 +210,21 @@ import org.controlsfx.control.Notifications;
            
     }
     
+    public void showNotification(String message)
+    {
+    
+        getNotifcationTray(message).show();
+    }
+    
     public void initPopup(JFXDrawer drawer, String drawerResource)
     {
+        
         try {
            FXMLLoader l = new FXMLLoader();
            l.setLocation(getClass().getResource(drawerResource));
            AnchorPane a = (AnchorPane)l.load();
-            drawer.setSidePane(a);
+           drawer.setSidePane(a);
+            
             
         } catch (IOException ex) {
             Logger.getLogger(MainLayoutController.class.getName()).log(Level.SEVERE, null, ex);
@@ -241,17 +246,20 @@ import org.controlsfx.control.Notifications;
         }
         
     }
-    public void loadTopBar(AnchorPane topPane)
+    public AnchorPane loadTopBar()
     {
         
          try {   
-            FXMLLoader dashFxml = new FXMLLoader();
+            dashFxml = new FXMLLoader();
             dashFxml.setLocation(getClass().getResource("/resources/Dashboard.fxml"));
-            AnchorPane myPane = (AnchorPane)dashFxml.load();
-            topPane.getChildren().add(myPane);
+            dashboard = (AnchorPane)dashFxml.load();
+            
         } catch (IOException ex) {
             Logger.getLogger(HomePageController.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
+         return dashboard;
+        
     }
     
     public void setButtonAnimation(JFXButton dashBoardButton)
@@ -407,6 +415,33 @@ import org.controlsfx.control.Notifications;
         Layout.mainStage = mainStage;
     }
     
+    public AnchorPane getMyHomeTopAnchorPane()
+    {
+        return myHomeTopAnchorPane;
+    }
+    public void setMyHomeTopAnchorPane(AnchorPane myHomeTopAnchorPane)
+    {
+        Layout.myHomeTopAnchorPane = myHomeTopAnchorPane;
+    }
+    
+     public AnchorPane getMyOrderTopAnchorPane()
+    {
+        return myOrderTopAnchorPane;
+    }
+    public void setMyOrderTopAnchorPane(AnchorPane myOrderTopAnchorPane)
+    {
+        Layout.myOrderTopAnchorPane = myOrderTopAnchorPane;
+    }
+
+    public Label setHomeUserTypeLabel() {
+         return homeUserTypeLabel;
+    }
+
+    public Label setOrderUserTypeLabel() {
+        return orderUserTypeLabel;
+    }
+
+   
 }
 
 

@@ -40,12 +40,14 @@ public class User extends Model {
     private final StringProperty consigneeBankName;
     private final StringProperty consigneeBankAddress;
      private final StringProperty driverStatus;
+    private final SimpleStringProperty createdAt;
+    private final SimpleStringProperty updatedAt;
     
    
     public User(String userID, String userType, String firstName, 
             String lastName, String phoneNumber, String email, 
             boolean isActive, String username, String password,
-            String consigneeBankName, String consigneeBankAddress, String driverStatus)
+            String consigneeBankName, String consigneeBankAddress, String driverStatus, String createdAt, String updatedAt)
     {
         this.userID = new SimpleStringProperty(userID);
         this.userType = new SimpleStringProperty(userType);
@@ -59,6 +61,8 @@ public class User extends Model {
         this.consigneeBankName = new SimpleStringProperty(consigneeBankName);
         this.consigneeBankAddress = new SimpleStringProperty(consigneeBankAddress);
         this.driverStatus = new SimpleStringProperty(driverStatus);
+        this.createdAt = new SimpleStringProperty(createdAt);
+        this.updatedAt = new SimpleStringProperty(updatedAt);
         
         
     }
@@ -71,7 +75,7 @@ public class User extends Model {
             this(null, null, null, 
                null, null, null, 
                true, null, null, 
-               null, null, null);
+               null, null, null,null, null);
     }
     
      
@@ -99,7 +103,7 @@ public class User extends Model {
     }
     public StringProperty emailProperty()
     {
-        return userType;
+        return email;
     }
     public BooleanProperty isActiveProperty()
     {
@@ -124,6 +128,14 @@ public class User extends Model {
     public StringProperty driverStatusProperty()
     {
         return driverStatus;
+    }
+
+    public SimpleStringProperty createdAtProperty() {
+        return createdAt;
+    }
+
+    public SimpleStringProperty updatedAtProperty() {
+        return updatedAt;
     }
       
     

@@ -24,12 +24,14 @@ import logistics.LayoutInterface;
 public class DashboardController implements Initializable, LayoutInterface {
 
     @FXML
-    private Label lblUserType;
+    private static Label lblUserType;
     @FXML
     private JFXButton btnDashboard;
     @FXML
     private JFXDrawer dashboardDrawer;
     private Layout layout;
+    
+    private String userType;
 
     /**
      * Initializes the controller class.
@@ -46,7 +48,10 @@ public class DashboardController implements Initializable, LayoutInterface {
         // TODO
         setLayout();
         layout.setDashboardController(this);
-        
+       
+       
+       
+         
     }    
 
     @FXML
@@ -62,6 +67,15 @@ public class DashboardController implements Initializable, LayoutInterface {
     public Label getUserTypeLabel()
     {
         return lblUserType;
+    }
+
+    public JFXDrawer getDashboardDrawer() {
+        return dashboardDrawer;
+    }
+    
+    public void setUserType(String userType)
+    {
+        this.userType = userType;
     }
    
     

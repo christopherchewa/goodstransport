@@ -42,71 +42,19 @@ public class HomePageController implements Initializable, LayoutInterface {
     private Layout layout;
     private String userType;
     
-    @FXML
-    private JFXButton btnHomeNew;
-    @FXML
-    private Label lblUserType;
-    @FXML
-    private AnchorPane myTopAnchorPane;
-/*
-    @FXML
-    private Label lblFirstName;
-
-    @FXML
-    private Label lblLastName;
-
-    @FXML
-    private Label lblPhoneNumber;
-    
-
-    @FXML
-    private JFXButton btnViewProfile;
-    
-     @FXML
-    private Label lblState;
-
-    @FXML
-    private Label lblTown;
-
-    @FXML
-    private Label lblZipcode;
-    
-    //side panel
     
     @FXML
-    private JFXButton btnMyProfile;
+    private AnchorPane myHomeTopAnchorPane;
 
-    @FXML
-    private JFXButton btnUsers;
-
-    @FXML
-    private JFXButton btnOrders;
-
-    @FXML
-    private JFXButton btnVehicles;
-
-    @FXML
-    private JFXButton btnCosts;
-
-    @FXML
-    private JFXButton btnReports;
-    private LoginController loginController;
-
-    @FXML
-    private void btnViewProfileAction(ActionEvent event) {
-    
-        
-        
-        
-    }
-    
-    */
+   
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
         
          setLayout();
-        layout.loadTopBar(myTopAnchorPane);
+         layout.setHomePageController(this);
+         
+
        
         
     }    
@@ -121,18 +69,15 @@ public class HomePageController implements Initializable, LayoutInterface {
         
     }
     
-    
 
-    @FXML
-    private void btnHomeNewAction(ActionEvent event) {
+   public AnchorPane getMyHomeTopAnchorPane() {
+        return myHomeTopAnchorPane;
     }
 
-    private void btnMaximizeAction(ActionEvent event) {
-        
-        layout.getMainStage().setMaximized(true);
+    public void setMyHomeTopAnchorPane(AnchorPane myHomeTopAnchorPane) {
+        this.myHomeTopAnchorPane = myHomeTopAnchorPane;
     }
 
-  
     
     
     

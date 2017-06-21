@@ -30,6 +30,7 @@ import logistics.DbConnection;
 import logistics.Transport;
 import logistics.models.User;
 import com.jfoenix.validation.RequiredFieldValidator;
+import insidefx.undecorator.UndecoratorController;
 import insidefx.undecorator.UndecoratorScene;
 import java.util.List;
 import javafx.beans.property.ReadOnlyBooleanProperty;
@@ -41,7 +42,9 @@ import javafx.geometry.Rectangle2D;
 import javafx.scene.control.TableView;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
@@ -91,6 +94,19 @@ public class LoginController implements Initializable, LayoutInterface {
     private String state;
     private String town;
     private String zipcode;
+    private AnchorPane myHomeTopAnchorPane;
+    private AnchorPane myOrderTopAnchorPane;
+    
+    private static HBox homeHBox;
+    private static HBox orderHBox;
+    
+    private static Label homeLabel;
+    private static Label orderLabel;
+    private boolean topBarSet;
+
+    public LoginController() {
+        this.topBarSet = false;
+    }
     
     
      
@@ -109,6 +125,7 @@ public class LoginController implements Initializable, LayoutInterface {
         passwordValidator.setMessage("Please enter a valid password");
         
         setLayout();
+        
         //DbConnection.disconnect();
     }    
 
@@ -134,13 +151,29 @@ public class LoginController implements Initializable, LayoutInterface {
         
            if(validated(usernameString, passwordString))
            {
-               layout.initMainLayout();
-           layout.getBorderPane().setCenter(homeStackPane); 
-           layout.getDashboardController().getUserTypeLabel().setText(userType);
+           layout.initMainLayout();
+           layout.getBorderPane().setCenter(homeStackPane);
+                if(!topBarSet)
+                {
+                    setTopBarInPages();
+                }
+           homeLabel.setText(userType);
+          orderLabel.setText(userType);
            }
-           
-         
         
+    }
+    
+    private void setTopBarInPages()
+    {
+         layout.getHomePageController().getMyHomeTopAnchorPane().getChildren().add(layout.getMyHomeTopAnchorPane());
+         homeHBox = (HBox)layout.getMyHomeTopAnchorPane().getChildren().get(0);
+         homeLabel = (Label)homeHBox.getChildren().get(1);
+         
+         
+         layout.getOrdersPageController().getMyOrderTopAnchorPane().getChildren().add(layout.getMyOrderTopAnchorPane());
+         orderHBox = (HBox)layout.getMyOrderTopAnchorPane().getChildren().get(0);
+         orderLabel = (Label)orderHBox.getChildren().get(1);
+         topBarSet = true;
     }
     
     public void setHomeStackPane(StackPane homeStackPane)
@@ -221,6 +254,21 @@ public String getUserType(){
   
 } 
 
+public AnchorPane getMyHomeTopAnchorPane() {
+        return myHomeTopAnchorPane;
+    }
+
+    public void setMyHomeTopAnchorPane(AnchorPane myHomeTopAnchorPane) {
+        this.myHomeTopAnchorPane = myHomeTopAnchorPane;
+    }
+    
+    public AnchorPane getMyOrderTopAnchorPane() {
+        return myOrderTopAnchorPane;
+    }
+
+    public void setMyOrderTopAnchorPane(AnchorPane myOrderTopAnchorPane) {
+        this.myOrderTopAnchorPane = myOrderTopAnchorPane;
+    }
  
   }
 

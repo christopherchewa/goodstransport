@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="760.0" maxWidth="1366.0" minHeight="760.0" minWidth="1366.0" prefHeight="760.0" prefWidth="1366.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="logistics.controllers.MainLayoutController">
+<BorderPane maxHeight="695.0" maxWidth="1351.0" minHeight="695.0" minWidth="1351.0" prefHeight="695.0" prefWidth="1351.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="logistics.controllers.MainLayoutController">
    <left>
       <VBox prefHeight="619.0" prefWidth="139.0" style="-fx-background-color: #2fc4a4; -fx-effect: dropshadow(gaussian, rgb(0.0, 0.0, 0.0, 0.15), 6.0, 0.7, 0.0,1.5);" BorderPane.alignment="CENTER">
          <BorderPane.margin>
@@ -141,6 +141,6 @@
       </VBox>
    </top>
    <center>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+      <AnchorPane prefHeight="620.0" prefWidth="1212.0" BorderPane.alignment="CENTER" />
    </center>
 </BorderPane>

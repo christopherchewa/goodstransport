@@ -7,6 +7,7 @@ package logistics.controllers;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
+import com.jfoenix.controls.JFXTextField;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -17,13 +18,20 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.input.KeyEvent;
 import logistics.DataManagement;
+import logistics.DataManagementInterface;
 import logistics.DbConnection;
 import logistics.Layout;
 import logistics.models.User;
 import logistics.LayoutInterface;
+import logistics.UserTypes;
+import logistics.models.Address;
+import logistics.models.Order;
 import logistics.models.Vehicle;
 
 
@@ -32,7 +40,7 @@ import logistics.models.Vehicle;
  *
  * @author Chewa
  */
-public class UsersPageController implements Initializable, LayoutInterface {
+public class UsersPageController implements Initializable, LayoutInterface, DataManagementInterface {
 
     final ObservableList<User> userList = FXCollections.observableArrayList();
     //FilteredList<User> filteredUserList = new FilteredList<>(userList, event -> true);
@@ -48,8 +56,6 @@ public class UsersPageController implements Initializable, LayoutInterface {
     @FXML
     private TableColumn<User, String>colLastName;
 
-    @FXML
-    private TableColumn<User, String> colPhoneNumber;
 
     @FXML
     private TableColumn<User, String>colUserType;
@@ -61,6 +67,26 @@ public class UsersPageController implements Initializable, LayoutInterface {
     private TableColumn<User, String> colEmail;
     @FXML
     private JFXButton btnDeleteUser;
+    @FXML
+    private ListView<String> addressesListView;
+    @FXML
+    private ListView<String> otherInfoListView;
+    
+    private final ObservableList<String> addList = FXCollections.observableArrayList();
+    private final ObservableList<String> otherInfoList = FXCollections.observableArrayList();
+    private DataManagement dataManagement;
+    
+    private String admin;
+    private String employee;
+    private String consigner;
+    private String shipper;
+    private String driver;
+    private String consignee;
+    
+    
+    
+    @FXML
+    private JFXTextField txtSearch;
 
     @Override
     public void setLayout() {
@@ -69,21 +95,23 @@ public class UsersPageController implements Initializable, LayoutInterface {
         
     }
     @Override
+    public void manageData() {
+        dataManagement = new DataManagement();
+
+    }
+    
+    @Override
     public void initialize(URL url, ResourceBundle rb) {
         
-        
+        manageData();
+        addUserChangesListener();
         colFirstName.setCellValueFactory(cellData -> cellData.getValue().firstNameProperty());
         colLastName.setCellValueFactory(cellData -> cellData.getValue().lastNameProperty());
-        colPhoneNumber.setCellValueFactory(cellData -> cellData.getValue().phoneNumberProperty());
         colUserType.setCellValueFactory(cellData -> cellData.getValue().userTypeProperty());
+        colEmail.setCellValueFactory(cellData -> cellData.getValue().emailProperty());
         loadUsersTable();
         setLayout();
-        
-        
-        
-        
-    
-         
+       
         
     }    
     
@@ -100,7 +128,72 @@ public class UsersPageController implements Initializable, LayoutInterface {
     }
 
 
-    
+    public void addUserChangesListener()
+    {
+        
+         //Add change listener
+        usersTable.getSelectionModel().selectedItemProperty().addListener((observableValue, oldValue, newValue) -> {
+            //Check whether item is selected and set value of selected item to Label
+            if (usersTable.getSelectionModel().getSelectedItem() != null) {
+                addList.removeAll(addList);
+                otherInfoList.removeAll(otherInfoList);
+                
+                User user = User.findById(Integer.parseInt(newValue.userIDProperty().get()));
+                //Addresses ListView
+                List<Address> addresses = user.getAll(Address.class);
+                if (addresses.isEmpty())
+                    {
+                        addList.add("No addresses available");
+                    }
+                    else
+                    {
+                     addresses.forEach((a)->{
+                     String addressString = a.getString("state") + " " +a.getString("town") + " , " +a.getString("zipcode");
+                     addList.add(addressString);
+                
+                        });
+                    }
+                //Other info List view
+                if ((newValue.userTypeProperty().get().equals(UserTypes.ADMIN)) || (newValue.userTypeProperty().get().equals(UserTypes.EMPLOYEE)))
+                        {
+                            
+                             String username = "Username: " + newValue.usernameProperty().get();
+                             otherInfoList.add(username);
+                        }
+                else if((newValue.userTypeProperty().get().equals(UserTypes.DRIVER)))
+                {
+                     String driverStatus = "Driver Status: " + newValue.driverStatusProperty().get();
+                     otherInfoList.add(driverStatus);
+                }
+                 else if((newValue.userTypeProperty().get().equals(UserTypes.CONSIGNEE)))
+                {
+                     String bankName = "Consignee Bank Name: " + newValue.consigneeBankNameProperty().get();
+                     String bankAddress = "Consignee Bank Address: " + newValue.consigneeBankAddressProperty().get();
+                     otherInfoList.addAll(bankName, bankAddress);
+                }
+                
+               try
+               {
+                  String phoneNumber = "Phone Number: " + newValue.phoneNumberProperty().get();
+                  String dateJoined = "Added on: " + newValue.createdAtProperty().get();
+                  System.out.println(dateJoined);
+                  otherInfoList.addAll(phoneNumber, dateJoined);
+               }
+               catch(Exception e)
+                       {
+                            System.out.println(e.getMessage());
+                       }
+                
+                
+                
+                addressesListView.setItems(addList);
+                otherInfoListView.setItems(otherInfoList);
+             
+                
+                
+            }
+        });
+    }
     
     
     
@@ -123,7 +216,9 @@ public class UsersPageController implements Initializable, LayoutInterface {
                   u.getString("password"),
                   u.getString("consignee_bank_name"),
                   u.getString("consignee_bank_address"),
-                  u.getString("driver_status")
+                  u.getString("driver_status"),
+                  u.getDate("created_at").toString(),
+                  u.getDate("updated_at").toString()
           ));
         });
               
@@ -135,6 +230,12 @@ public class UsersPageController implements Initializable, LayoutInterface {
     @FXML
     private void btnDeleteUserAction(ActionEvent event) {
     }
+
+    @FXML
+    private void searchFunctionAction(KeyEvent event) {
+    }
+
+    
 
     
 

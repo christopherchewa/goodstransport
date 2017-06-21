@@ -161,7 +161,7 @@ public class VehiclesPageController implements Initializable, LayoutInterface, D
                 {
                     
                    // System.out.println("Number Plate: " + vehicle.getString("number_plate"));
-                    dataManagement.showNotification("Vehicle has been added");
+                    layout.showNotification("Vehicle has been added");
                  dataManagement.loadVehiclesTable(vehicleList, vehiclesTable);
         txtNumberPlate.clear();
         cbVehicleStatus.valueProperty().set(null);

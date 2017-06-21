@@ -5,10 +5,12 @@
  */
 package logistics.models;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Random;
 import java.util.UUID;
 import javafx.beans.property.DoubleProperty;
+import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
@@ -27,54 +29,83 @@ import org.javalite.activejdbc.annotations.Table;
 
 public class Order extends Model {
     
-    
+    private final StringProperty orderId;
     private StringProperty orderRefId;
-    private StringProperty orderStatus;
-   private DoubleProperty paidAmount;
-   private DoubleProperty balanceAmount;
+    //private final StringProperty orderRefIdItem;
+    private final StringProperty orderStatus;
+   // private final StringProperty OrderDate;
+     
+    //private final ObjectProperty<LocalDate> pickupDate;
+    //private final ObjectProperty<LocalDate> deliveryDate;
+   private final DoubleProperty paidAmount;
+   private final DoubleProperty balanceAmount;
    
    
     
-    public Order()
-    {
-        this(null, 0.0, 0.0);
-    }
     
-    public Order(String orderStatus, Double paidAmount, Double balanceAmount)
+    
+    public Order(String orderId, String orderRefId, String orderStatus, Double paidAmount, Double balanceAmount)
     {
-       // this.orderRefId = new SimpleStringProperty(orderRefId);
+        this.orderId = new SimpleStringProperty(orderId);
+       this.orderRefId = new SimpleStringProperty(orderRefId);
         this.orderStatus = new SimpleStringProperty(orderStatus);
+
+       // this.createdAt = new SimpleStringProperty(createdAt);
+       // this.pickupDate = null;
+       // this.deliveryDate = null;
+                
         this.paidAmount = new SimpleDoubleProperty(paidAmount);
         this.balanceAmount = new SimpleDoubleProperty(balanceAmount);
     }
     
+public Order()
+    {
+        this(null, null, null, 0.0, 0.0);
+    }
+
+      public StringProperty orderIdProperty() {
+        return orderId;
+    }
+    
        
     
-       public StringProperty setOrderRefIdProperty() {
+       public StringProperty orderRefIdGeneratorProperty() {
            
+           //generate uuid(len - 36), remove dashes, change to uppercase, only get 6,  letters/numbers, concatenate with # at the beginning
         String refNo = "#" + UUID.randomUUID().toString().replace("-", "").toUpperCase().substring(5, 11);
+        
         try{
-            Order orderObjList = Order.findFirst("order_ref_id = ? ", refNo);
-            if(orderObjList.exists())
+            
+       // Order orderObj = Order.findFirst("order_ref_id = ?", refNo);
+       Order orderObj = Order.findFirst("order_ref_id = ?", "#D4EECD");
+            while(orderObj != null)
             {
-                
-                return orderRefId = setOrderRefIdProperty();
+            refNo = "#" + UUID.randomUUID().toString().replace("-", "").toUpperCase().substring(5, 11);
+            orderObj = Order.findFirst("order_ref_id = ?", refNo);
+           
             }
+            orderRefId = new SimpleStringProperty(refNo);
+            System.out.println("Found matching....generating newRefID");
+            System.out.println("Order Ref Id: " + orderRefId);
         }
         catch(Exception e)
-                {
-                    orderRefId = new SimpleStringProperty(refNo);
-                    
-                    System.out.println("No similar Ref Id found" + " Is: " + e.getMessage() +"." );
-                    System.out.println("From model: " + orderRefId);
-                    System.out.println("Generating ref Id...");
-                    System.out.println("Ref Id is set.");
-                } 
-        System.out.println("Ref id has been requested for and has been returned");
-        return orderRefId;
+        {
+          orderRefId = new SimpleStringProperty(refNo);
+          System.out.println("New Ref Id generated");
+          
+        }
         
+        System.out.println("From models: " + orderRefId);
+        
+        return orderRefId;
+       
     } 
 
+       
+       public StringProperty getOrderRefIdProperty()
+       {
+           return orderRefId;
+       }
       
        
     public StringProperty orderStatusProperty() {
@@ -88,6 +119,20 @@ public class Order extends Model {
     public DoubleProperty balanceAmountProperty() {
         return balanceAmount;
     }
+
+  
+/*
+    public StringProperty createdAtProperty() {
+        return createdAt;
+    }
+
+    public StringProperty pickupDateProperty() {
+        return pickupDate;
+    }
+
+    public StringProperty deliveryDateProperty() {
+        return deliveryDate;
+    }
     
-    
+    */
 }

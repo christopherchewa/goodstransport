@@ -16,8 +16,16 @@ and open the template in the editor.
 
  
 /*remove border from list views*/
-.orderListViews{
+.orderListViews {
     
     -fx-background-insets: 0;
     -fx-padding: 0;
 } 
+
+
+.listViewScrollPane
+{
+    -fx-background-insets: 0;
+    -fx-padding: 0;
+     -fx-border-color:white;
+}

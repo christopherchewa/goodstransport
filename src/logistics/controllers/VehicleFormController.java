@@ -88,7 +88,7 @@ public class VehicleFormController implements Initializable, LayoutInterface, Da
     @FXML
    public void btnVehicleSaveAction(ActionEvent event) {
         
-        dataManagement.showNotification("Vehicle has been added");
+        layout.showNotification("Vehicle has been added");
         
         
     }

@@ -8,7 +8,6 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -22,7 +21,7 @@
    <children>
       <AnchorPane prefHeight="598.0" prefWidth="1074.0">
          <children>
-            <ScrollPane layoutX="71.0" layoutY="82.0" prefHeight="465.0" prefWidth="744.0" vbarPolicy="NEVER" AnchorPane.bottomAnchor="98.0" AnchorPane.leftAnchor="71.0" AnchorPane.rightAnchor="385.0">
+            <ScrollPane hbarPolicy="NEVER" layoutX="71.0" layoutY="82.0" prefHeight="465.0" prefWidth="744.0" AnchorPane.bottomAnchor="98.0" AnchorPane.leftAnchor="71.0" AnchorPane.rightAnchor="385.0">
                <content>
                   <TableView fx:id="vehiclesTable" editable="true" prefHeight="457.0" prefWidth="744.0" style="-fx-background-color: white;" stylesheets="@custom.css">
                      <columns>
@@ -39,7 +38,7 @@
                   </TableView>
                </content>
             </ScrollPane>
-            <VBox layoutX="886.0" layoutY="82.0" prefWidth="277.0" spacing="18.0">
+            <VBox layoutX="885.0" layoutY="98.0" prefWidth="277.0" spacing="18.0">
                <children>
                   <Pane prefHeight="128.0" prefWidth="277.0" style="-fx-background-color: white; -fx-effect: dropshadow(gaussian, rgb(0.0, 0.0, 0.0, 0.15), 6.0, 0.7, 0.0,1.5);">
                      <children>
@@ -52,7 +51,6 @@
                         </VBox>
                      </children>
                   </Pane>
-                  <Separator prefWidth="200.0" />
                   <Pane prefHeight="128.0" prefWidth="277.0" style="-fx-background-color: white; -fx-effect: dropshadow(gaussian, rgb(0.0, 0.0, 0.0, 0.15), 6.0, 0.7, 0.0,1.5);">
                      <children>
                         <Pane prefHeight="128.0" prefWidth="92.0" style="-fx-background-color: #ff9c3c;" />
@@ -64,7 +62,6 @@
                         </VBox>
                      </children>
                   </Pane>
-                  <Separator prefWidth="200.0" />
                   <Pane prefHeight="128.0" prefWidth="277.0" style="-fx-background-color: white; -fx-effect: dropshadow(gaussian, rgb(0.0, 0.0, 0.0, 0.15), 6.0, 0.7, 0.0,1.5);">
                      <children>
                         <Pane prefHeight="128.0" prefWidth="92.0" style="-fx-background-color: #ff9c3c;" />
@@ -100,10 +97,10 @@
                   </JFXButton>
                </children>
             </HBox>
-            <JFXTextField fx:id="txtSearch" layoutX="550.0" layoutY="30.0" maxWidth="220.0" minWidth="220.0" onKeyPressed="#searchFunctionAction" prefWidth="220.0" />
+            <JFXTextField fx:id="txtSearch" layoutX="550.0" layoutY="30.0" maxWidth="220.0" minWidth="220.0" onKeyPressed="#searchFunctionAction" prefWidth="220.0" promptText="Search..." />
             <Label contentDisplay="GRAPHIC_ONLY" layoutX="784.0" layoutY="39.0" text="Label">
                <graphic>
-                  <FontAwesomeIconView fill="#669cff" glyphName="SEARCH" size="25" />
+                  <FontAwesomeIconView fill="#669cff" glyphName="SEARCH" size="20" />
                </graphic>
             </Label>
          </children>
